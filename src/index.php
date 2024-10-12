@@ -19,11 +19,29 @@ $result = mysqli_query($conn, $sql);
     <link href="style.css" rel="stylesheet">
     <title>My PHP Tailwind Project</title>
     <script>
+        // Retrieve tasks' completion state from localStorage on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            const rows = document.querySelectorAll('[id^="task-"]');
+
+            rows.forEach(row => {
+                let taskId = row.id.split("-")[1];
+                let completed = localStorage.getItem(`task-${taskId}`);
+                if (completed === "true") {
+                    document.getElementById(`task-${taskId}`).classList.add('line-through');
+                }
+            });
+        });
+
         function markComplete(taskId) {
             var taskRow = document.getElementById(`task-${taskId}`);
             taskRow.classList.toggle('line-through');
+
+            // Save completion state in localStorage
+            let isCompleted = taskRow.classList.contains('line-through');
+            localStorage.setItem(`task-${taskId}`, isCompleted);
         }
     </script>
+
     <style>
         body {
             font-family: Montserrat;
@@ -143,7 +161,7 @@ $result = mysqli_query($conn, $sql);
                                 </td>
                             </tr>
                         <?php
-                            $num++; // Increment the counter
+                            $num++;
                         endwhile;
                         ?>
 
