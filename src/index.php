@@ -25,25 +25,51 @@ $result = mysqli_query($conn, $sql);
         }
     </script>
     <style>
+        body {
+            font-family: Montserrat;
+            background: linear-gradient(45deg, #000, #333);
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
         .line-through {
             text-decoration: line-through;
             color: gray;
         }
 
-        body {
-            font-family: "Montserrat", sans-serif;
-        }
 
-        section {
-            height: 100vh;
-            overflow-x: hidden;
-            background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%230e0c0cff'/><path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'  stroke-width='1' stroke='%232b2b31ff' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
-        }
 
         main>form>button {
             -webkit-box-shadow: 0px 0px 262px 23px rgba(79, 91, 147, 0.73);
             -moz-box-shadow: 0px 0px 262px 23px rgba(79, 91, 147, 0.73);
             box-shadow: 0px 0px 262px 23px rgba(79, 91, 147, 0.73);
+        }
+
+        section form {
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(9px);
+            backdrop-filter: blur(9px);
+            border: 1px solid rgba(255, 255, 255, 0.025);
+            border-radius: 10px;
+        }
+
+        section {
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -52,7 +78,7 @@ $result = mysqli_query($conn, $sql);
     <section>
         <h1 class="text-center text-7xl text-[#5f6eb1] mt-5 ">-- To Do List --</h1>
         <main class="w-screen justify-center items-center flex flex-col">
-            <form action="../../my-php-tailwind-project/handlers/storeTask.php" method="POST" class="border border-1 p-6 flex justify-center items-center flex-col w-96 my-20 gap-4 shadow-lg">
+            <form action="../handlers/storeTask.php" method="POST" class="border border-1 p-6 flex justify-center items-center flex-col w-96 my-20 gap-4 shadow-lg">
                 <?php if (isset($_SESSION['success'])): ?>
                     <div class="text-white p-10 bg-emerald-500 rounded-2xl w-full">
                         <?php
@@ -77,11 +103,12 @@ $result = mysqli_query($conn, $sql);
                         ?>
                     </div>
                 <?php endif; ?>
-                <input name="title" class="w-full  bg-transparent placeholder:text-white text-white text-lg border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow-lg  hover:shadow-md  placeholder:opacity-75 placeholder:transition-all" placeholder="Type here...">
+                <input name="title" class="w-full  bg-transparent placeholder:text-white text-white text-lg border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm   
+                  placeholder:opacity-75 placeholder:transition-all" placeholder="Type here...">
                 <button class="border-1 border bg-transparent text-white px-4 py-3 rounded-lg w-full text-lg transition-all hover:bg-[#171717e1]">Add..</button>
             </form>
-            <div>
-                <table class="w-[800px] text-white   shadow-lg rounded-lg overflow-hidden">
+            <div class="mb-10">
+                <table class="w-[800px] text-white   shadow-lg rounded-lg overflow-hidden ">
                     <thead class="bg-[#4F5B93] text-white ">
                         <tr>
                             <th class="py-2 px-4 text-left font-normal">No</th>

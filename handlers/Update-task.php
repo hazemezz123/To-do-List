@@ -44,13 +44,29 @@ mysqli_close($conn);
     <title>My PHP Tailwind Project</title>
     <style>
         body {
-            font-family: "Montserrat", sans-serif;
+            font-family: Montserrat;
+            background: linear-gradient(45deg, #000, #333);
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         section {
             height: 100vh;
             overflow-x: hidden;
-            background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%230e0c0cff'/><path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'  stroke-width='1' stroke='%232b2b31ff' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
         }
 
         main>form>button {
@@ -66,6 +82,19 @@ mysqli_close($conn);
         section>p {
             font-weight: 600;
             font-size: large;
+        }
+
+        section form {
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(9px);
+            backdrop-filter: blur(9px);
+            border: 1px solid rgba(255, 255, 255, 0.025);
+            border-radius: 10px;
+        }
+
+        section {
+            overflow-x: hidden;
+
         }
     </style>
 </head>
