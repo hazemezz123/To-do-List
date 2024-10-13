@@ -97,7 +97,7 @@ $result = mysqli_query($conn, $sql);
         <h1 class="text-center text-7xl text-[#5f6eb1] mt-5 ">-- To Do List --</h1>
         <main class="w-screen justify-center items-center flex flex-col">
             <form action="../handlers/storeTask.php" method="POST" class="border border-1 p-6 flex justify-center items-center flex-col w-96 my-20 gap-4 shadow-lg">
-                <?php if (isset($_SESSION['success'])): ?>
+                <?php if (isset($_SESSION['success'])):  ?>
                     <div class="text-white p-10 bg-emerald-500 rounded-2xl w-full">
                         <?php
                         echo $_SESSION['success'];
